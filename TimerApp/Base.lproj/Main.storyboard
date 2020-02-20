@@ -15,8 +15,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="7ja-Cx-vS5">
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ja-Cx-vS5">
                                 <rect key="frame" x="0.0" y="88" width="414" height="216"/>
+                                <connections>
+                                    <action selector="timePickerChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="T6d-qG-i9l"/>
+                                </connections>
                             </datePicker>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MpF-2h-Rpr">
                                 <rect key="frame" x="20" y="344" width="374" height="34"/>
@@ -26,6 +29,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y49-kG-yGv">
                                 <rect key="frame" x="168" y="433" width="78" height="30"/>
                                 <state key="normal" title="Start Timer"/>
+                                <connections>
+                                    <action selector="startButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JRq-qQ-A5w"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -42,6 +48,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="hQ2-tV-OWr"/>
+                    <connections>
+                        <outlet property="button" destination="Y49-kG-yGv" id="thn-rA-tuf"/>
+                        <outlet property="pickerView" destination="7ja-Cx-vS5" id="dhI-UL-TOn"/>
+                        <outlet property="textField" destination="MpF-2h-Rpr" id="7IP-Gc-Spc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
