@@ -7,7 +7,64 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Set Timer View Controller-->
+        <!--Your Timers-->
+        <scene sceneID="H9F-iw-IdT">
+            <objects>
+                <viewController id="KJy-zr-VaK" customClass="ManageTimersViewController" customModule="TimerApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="F7k-vT-zdz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vxo-1y-N6L">
+                                <rect key="frame" x="0.0" y="56" width="414" height="752"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="timerTitleCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="timerTitleCell" textLabel="lQX-J2-Whi" detailTextLabel="6AH-LT-UUo" style="IBUITableViewCellStyleValue1" id="Ou3-8X-Fhl">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ou3-8X-Fhl" id="HTJ-Rd-eSY">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lQX-J2-Whi">
+                                                    <rect key="frame" x="20" y="12" width="33.5" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6AH-LT-UUo">
+                                                    <rect key="frame" x="350" y="12" width="44" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="vxo-1y-N6L" firstAttribute="top" secondItem="XwV-X8-0Ae" secondAttribute="top" id="mbn-T1-WOD"/>
+                            <constraint firstItem="vxo-1y-N6L" firstAttribute="bottom" secondItem="XwV-X8-0Ae" secondAttribute="bottom" id="p29-xE-HaI"/>
+                            <constraint firstItem="vxo-1y-N6L" firstAttribute="trailing" secondItem="XwV-X8-0Ae" secondAttribute="trailing" id="wIT-Nz-Gvc"/>
+                            <constraint firstItem="vxo-1y-N6L" firstAttribute="leading" secondItem="XwV-X8-0Ae" secondAttribute="leading" id="zGi-hz-R7F"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="XwV-X8-0Ae"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Your Timers" id="Byo-xm-OYk"/>
+                    <connections>
+                        <outlet property="tableView" destination="vxo-1y-N6L" id="Hq7-Rj-aoC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Iq-ll-hN3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="986.95652173913049" y="-724.55357142857144"/>
+        </scene>
+        <!--Timer For Events-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="SetTimerViewController" customModule="TimerApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -24,13 +81,14 @@
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MpF-2h-Rpr">
                                 <rect key="frame" x="20" y="344" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y49-kG-yGv">
                                 <rect key="frame" x="168" y="433" width="78" height="30"/>
                                 <state key="normal" title="Start Timer"/>
                                 <connections>
                                     <action selector="startButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JRq-qQ-A5w"/>
+                                    <segue destination="qSL-7e-VA7" kind="modal" id="23h-Dw-iqq"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -47,7 +105,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="hQ2-tV-OWr"/>
+                    <navigationItem key="navigationItem" title="Timer For Events" id="hQ2-tV-OWr"/>
                     <connections>
                         <outlet property="button" destination="Y49-kG-yGv" id="thn-rA-tuf"/>
                         <outlet property="pickerView" destination="7ja-Cx-vS5" id="dhI-UL-TOn"/>
@@ -75,6 +133,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OV5-Ue-273" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="112.5"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ETx-z2-iJy">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qSL-7e-VA7" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Hss-Tc-QZC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="KJy-zr-VaK" kind="relationship" relationship="rootViewController" id="z7v-cq-cVQ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Aeb-mA-Ni4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="138" y="-724"/>
         </scene>
     </scenes>
 </document>

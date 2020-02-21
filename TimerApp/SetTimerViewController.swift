@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 protocol SetTimerControllerDelegate: AnyObject {
     func didCreateNotification(_ setTimerController: SetTimerViewController)
@@ -38,7 +39,7 @@ class SetTimerViewController: UIViewController {
         // create the content (Model for motification):
         let content = UNMutableNotificationContent()
         content.title = textField.text ?? "No title"
-        content.body = "Do Not Forget!"
+        content.body = "Time of Timer"
         //content.sound = .default
         //or try custom sound:
         content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: "wolf-howling-sound-effect.mp3"))
@@ -85,6 +86,44 @@ class SetTimerViewController: UIViewController {
         delegate?.didCreateNotification(self)
         dismiss(animated: true)
     }
+    
+     //FIXME: unwind segue?
+    func unwindSegue(segue: UIStoryboardSegue, sender: Any?) {
+        guard let navController = segue.source as? UINavigationController,
+            let manageTimersVC = navController.viewControllers.first as? ManageTimersViewController else {
+                 fatalError("could not downcast to CreateNotificationViewController")
+        }
+       // manageTimersVC.delegate = self
+        }
+        
+        // unwinde segue
+    //    @IBAction func addNewEvent(segue: UIStoryboardSegue) {
+    //        // caveman debugging  print("adding event....")
+    //        guard let createEventController = segue.source as? CreateEventController,
+    //            let createdEvent = createEventController.event else {
+    //            fatalError("failed to access CreateEventController")
+    //        }
+    //        // insert into our events array
+    //        // 1. update the data model e.g. update the evnts array
+    //        events.insert(createdEvent, at: 0) // implies top of the events array
+    //
+    //        // create an indexPathto be inserted into the tableView
+    //        let indexPath = IndexPath(row: 0, section: 0) // will represent top of table view
+    //
+    //        // 2. we need to update the table view
+    //        // use indexPath to inser into tble view
+    //        tableView.insertRows(at: [indexPath], with: .automatic)
+    //    }
+        
+    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    //           guard let navController = segue.destination as?
+    //               UINavigationController,
+    //               let createVC = navController.viewControllers.first as?
+    //               CreateNotificationViewController else {
+    //                   fatalError("could not downcast to CreateNotificationViewController")
+    //           }
+    //           createVC.delegate = self
+    //       }
 }
 
 extension SetTimerViewController {
