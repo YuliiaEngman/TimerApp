@@ -45,13 +45,21 @@ class ManageTimersViewController: UIViewController {
     }
     
     //FIXME: unwind segue?
-      func unwindSegue(segue: UIStoryboardSegue, sender: Any?) {
-          guard let navController = segue.source as? UINavigationController,
-              let setTimerVC = navController.viewControllers.first as? SetTimerViewController else {
-                   fatalError("could not downcast to SetTimerViewController")
-          }
-         setTimerVC.delegate = self
-          }
+//      func unwindSegue(segue: UIStoryboardSegue, sender: Any?) {
+//          guard let navController = segue.source as? UINavigationController,
+//              let setTimerVC = navController.viewControllers.first as? SetTimerViewController else {
+//                   fatalError("could not downcast to SetTimerViewController")
+//          }
+//         setTimerVC.delegate = self
+//          }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let navController = segue.destination as? UINavigationController,
+            let setTimerVC = navController.viewControllers.first as? SetTimerViewController else {
+                fatalError("could not downcast to SetTimerViewController")
+        }
+        setTimerVC.delegate = self
+    }
     
     @objc private func loadNotifications() {
         pendingNotification.getPendingNotifications {(requests) in
@@ -98,7 +106,8 @@ extension ManageTimersViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "timerTitleCell", for: indexPath)
         let notification = notifications[indexPath.row]
         cell.textLabel?.text = notification.content.title
-        cell.detailTextLabel?.text = notification.content.body
+        cell.detailTextLabel?.text = notification.content.subtitle
+        //body?
         return cell
     }
     
@@ -131,7 +140,7 @@ extension ManageTimersViewController: UNUserNotificationCenterDelegate {
 }
 
 extension ManageTimersViewController: SetTimerViewControllerDelegate {
-    func didCreateNotification(_ setTimerController: SetTimerViewController) {
+    func didCreateNotification(_ setTimerNotificationCenter: SetTimerViewController) {
         loadNotifications()
     }
 }
