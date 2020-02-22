@@ -72,12 +72,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ja-Cx-vS5">
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wfd-iy-rDS">
                                 <rect key="frame" x="0.0" y="88" width="414" height="216"/>
-                                <connections>
-                                    <action selector="timePickerChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="T6d-qG-i9l"/>
-                                </connections>
-                            </datePicker>
+                            </pickerView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MpF-2h-Rpr">
                                 <rect key="frame" x="20" y="344" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -94,22 +91,22 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="MpF-2h-Rpr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="2S0-9I-nXK"/>
-                            <constraint firstItem="7ja-Cx-vS5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="EOr-I8-TyH"/>
+                            <constraint firstItem="wfd-iy-rDS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="4QL-ga-7sL"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MpF-2h-Rpr" secondAttribute="trailing" constant="20" id="DNu-oa-GHJ"/>
                             <constraint firstItem="Y49-kG-yGv" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="EPu-P3-cvk"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MpF-2h-Rpr" secondAttribute="trailing" constant="20" id="LGR-aW-AUU"/>
-                            <constraint firstItem="7ja-Cx-vS5" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="S5q-lP-7Uv"/>
-                            <constraint firstItem="MpF-2h-Rpr" firstAttribute="top" secondItem="7ja-Cx-vS5" secondAttribute="bottom" constant="40" id="d7O-PI-jkj"/>
+                            <constraint firstItem="MpF-2h-Rpr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="JbE-ZV-Q8o"/>
+                            <constraint firstItem="MpF-2h-Rpr" firstAttribute="top" secondItem="wfd-iy-rDS" secondAttribute="bottom" constant="40" id="Zwk-xr-lZj"/>
+                            <constraint firstItem="wfd-iy-rDS" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="d5W-Bg-Mxh"/>
                             <constraint firstItem="Y49-kG-yGv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fk7-ax-CCn"/>
-                            <constraint firstItem="7ja-Cx-vS5" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="o08-lN-Kbm"/>
+                            <constraint firstItem="wfd-iy-rDS" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ofg-4Z-4cQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Timer For Events" id="hQ2-tV-OWr"/>
                     <connections>
                         <outlet property="button" destination="Y49-kG-yGv" id="thn-rA-tuf"/>
-                        <outlet property="pickerView" destination="7ja-Cx-vS5" id="dhI-UL-TOn"/>
                         <outlet property="textField" destination="MpF-2h-Rpr" id="7IP-Gc-Spc"/>
+                        <outlet property="timerPickerView" destination="wfd-iy-rDS" id="Rgw-xe-Sjp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

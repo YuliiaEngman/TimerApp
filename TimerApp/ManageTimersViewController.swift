@@ -33,7 +33,6 @@ class ManageTimersViewController: UIViewController {
         configureRefreshControl()
         loadNotifications()
         checkForNotificationAuthorization()
-        
         // setting this view controller as the delegate object for the UNNotificationCenterDelegate
         center.delegate = self
     }
@@ -43,15 +42,6 @@ class ManageTimersViewController: UIViewController {
         tableView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(loadNotifications), for: .valueChanged)
     }
-    
-    //FIXME: unwind segue?
-//      func unwindSegue(segue: UIStoryboardSegue, sender: Any?) {
-//          guard let navController = segue.source as? UINavigationController,
-//              let setTimerVC = navController.viewControllers.first as? SetTimerViewController else {
-//                   fatalError("could not downcast to SetTimerViewController")
-//          }
-//         setTimerVC.delegate = self
-//          }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let navController = segue.destination as? UINavigationController,
