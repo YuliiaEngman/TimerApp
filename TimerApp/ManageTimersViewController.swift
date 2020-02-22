@@ -44,6 +44,15 @@ class ManageTimersViewController: UIViewController {
         refreshControl.addTarget(self, action: #selector(loadNotifications), for: .valueChanged)
     }
     
+    //FIXME: unwind segue?
+      func unwindSegue(segue: UIStoryboardSegue, sender: Any?) {
+          guard let navController = segue.source as? UINavigationController,
+              let setTimerVC = navController.viewControllers.first as? SetTimerViewController else {
+                   fatalError("could not downcast to SetTimerViewController")
+          }
+         setTimerVC.delegate = self
+          }
+    
     @objc private func loadNotifications() {
         pendingNotification.getPendingNotifications {(requests) in
             self.notifications = requests
@@ -121,7 +130,7 @@ extension ManageTimersViewController: UNUserNotificationCenterDelegate {
     }
 }
 
-extension ManageTimersViewController: SetTimerControllerDelegate {
+extension ManageTimersViewController: SetTimerViewControllerDelegate {
     func didCreateNotification(_ setTimerController: SetTimerViewController) {
         loadNotifications()
     }

@@ -9,8 +9,8 @@
 import UIKit
 import UserNotifications
 
-protocol SetTimerControllerDelegate: AnyObject {
-    func didCreateNotification(_ setTimerController: SetTimerViewController)
+protocol SetTimerViewControllerDelegate: AnyObject {
+    func didCreateNotification(_ setTimerNotificationCenter: SetTimerViewController)
 }
 
 class SetTimerViewController: UIViewController {
@@ -21,15 +21,15 @@ class SetTimerViewController: UIViewController {
     
     @IBOutlet weak var button: UIButton!
     
-    var hour: Int = 0
-    var minutes: Int = 0
-    var seconds: Int = 0
+    //    var hour: Int = 0
+    //    var minutes: Int = 0
+    //    var seconds: Int = 0
     
-    weak var delegate: SetTimerControllerDelegate?
+    weak var delegate: SetTimerViewControllerDelegate?
     
-     //FIXME: I dont think it is working
-    private var timeInterval: TimeInterval = Timer().timeInterval
-    
+    //FIXME: I dont think it is working
+    // private var timeInterval: TimeInterval = Timer().timeInterval
+    var timeInterval: TimeInterval = Double(5.0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,9 +40,10 @@ class SetTimerViewController: UIViewController {
         let content = UNMutableNotificationContent()
         content.title = textField.text ?? "No title"
         content.body = "Time of Timer"
-        //content.sound = .default
+        content.subtitle = "Learning local notifications"
+        content.sound = .default
         //or try custom sound:
-        content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: "wolf-howling-sound-effect.mp3"))
+        //content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: "wolf-howling-sound-effect.mp3"))
         
         // create identifier - ask Alex...?
         let identifier = UUID().uuidString
@@ -57,20 +58,19 @@ class SetTimerViewController: UIViewController {
             }
         } else {
             print("imsge resource could not be found")
-            
-            //create trigger - timeInterval
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval, repeats: false)
-            
-            // create a request:
-            let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
-            
-            //adding request to the UNNotificationCenter
-            UNUserNotificationCenter.current().add(request) { (error) in
-                if let error = error {
-                    print("error adding request: \(error)")
-                } else {
-                    print("request was succesfully added")
-                }
+        }
+        //create trigger - timeInterval
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval, repeats: false)
+        
+        // create a request:
+        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+        
+        //adding request to the UNNotificationCenter
+        UNUserNotificationCenter.current().add(request) { (error) in
+            if let error = error {
+                print("error adding request: \(error)")
+            } else {
+                print("request was succesfully added")
             }
         }
     }
@@ -80,23 +80,16 @@ class SetTimerViewController: UIViewController {
         timeInterval = sender.countDownDuration
     }
     
-
+    
     @IBAction func startButtonPressed(_ sender: UIButton) {
         createLocalNotification()
         delegate?.didCreateNotification(self)
         dismiss(animated: true)
     }
     
-     //FIXME: unwind segue?
-    func unwindSegue(segue: UIStoryboardSegue, sender: Any?) {
-        guard let navController = segue.source as? UINavigationController,
-            let manageTimersVC = navController.viewControllers.first as? ManageTimersViewController else {
-                 fatalError("could not downcast to CreateNotificationViewController")
-        }
-       // manageTimersVC.delegate = self
-        }
-        
-        // unwinde segue
+    
+    
+    // unwinde segue
     //    @IBAction func addNewEvent(segue: UIStoryboardSegue) {
     //        // caveman debugging  print("adding event....")
     //        guard let createEventController = segue.source as? CreateEventController,
@@ -114,7 +107,7 @@ class SetTimerViewController: UIViewController {
     //        // use indexPath to inser into tble view
     //        tableView.insertRows(at: [indexPath], with: .automatic)
     //    }
-        
+    
     //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     //           guard let navController = segue.destination as?
     //               UINavigationController,
@@ -126,50 +119,50 @@ class SetTimerViewController: UIViewController {
     //       }
 }
 
-extension SetTimerViewController {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 3
-    }
-
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        switch component {
-        case 0:
-            return 25
-        case 1, 2:
-            return 60
-        default:
-            return 0
-        }
-    }
-
-    func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
-        return pickerView.frame.size.width/3
-    }
-
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        switch component {
-        case 0:
-            return "\(row) Hour"
-        case 1:
-            return "\(row) Minute"
-        case 2:
-            return "\(row) Second"
-        default:
-            return ""
-        }
-    }
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        switch component {
-        case 0:
-            hour = row
-        case 1:
-            minutes = row
-        case 2:
-            seconds = row
-        default:
-            break;
-        }
-    }
-    
-}
-
+//extension SetTimerViewController: UIPickerViewDelegate {
+//    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+//        return 3
+//    }
+//
+//    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+//        switch component {
+//        case 0:
+//            return 25
+//        case 1, 2:
+//            return 60
+//        default:
+//            return 0
+//        }
+//    }
+//
+//    func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
+//        return pickerView.frame.size.width/3
+//    }
+//
+//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+//        switch component {
+//        case 0:
+//            return "\(row) Hour"
+//        case 1:
+//            return "\(row) Minute"
+//        case 2:
+//            return "\(row) Second"
+//        default:
+//            return ""
+//        }
+//    }
+//    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+//        switch component {
+//        case 0:
+//            hour = row
+//        case 1:
+//            minutes = row
+//        case 2:
+//            seconds = row
+//        default:
+//            break;
+//        }
+//    }
+//
+//}
+//
