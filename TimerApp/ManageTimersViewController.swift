@@ -31,6 +31,7 @@ class ManageTimersViewController: UIViewController {
         super.viewDidLoad()
         tableView.dataSource = self
         configureRefreshControl()
+        
         loadNotifications()
         checkForNotificationAuthorization()
         // setting this view controller as the delegate object for the UNNotificationCenterDelegate
