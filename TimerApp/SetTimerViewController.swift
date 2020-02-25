@@ -22,8 +22,8 @@ class SetTimerViewController: UIViewController {
     weak var delegate: SetTimerViewControllerDelegate?
     
     //FIXME: I dont think it is working
-    private var timeInterval: TimeInterval! = Date().timeIntervalSinceNow + 5
-    //var timeInterval: TimeInterval = Double(5.0)
+    //private var timeInterval: TimeInterval = Date().timeIntervalSinceNow + 5
+    var timeInterval: TimeInterval = Double(5.0)
     
     
         var hour: Int = 0
@@ -39,14 +39,13 @@ class SetTimerViewController: UIViewController {
     }
     
     private func createLocalNotification() {
-        // create the content (Model for motification):
+        // create the content (Model for тotification):
         let content = UNMutableNotificationContent()
         content.title = textField.text ?? "No title"
         content.body = "Time of Timer"
-        content.subtitle = "fires in \(totalTime)"
+        content.subtitle = "Timer fires in \(hour) hr \(minutes) min and \(seconds) sec."
         //content.sound = .default
-        //or try custom sound:
-        // does not perform sound...
+        //Custom sound - works when app is closed:
         content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: "wolf-howling-sound-effect.mp3"))
         
         // create identifier - ask Alex...?
@@ -61,7 +60,7 @@ class SetTimerViewController: UIViewController {
                 print("error with attachment: \(error)")
             }
         } else {
-            print("imsge resource could not be found")
+            print("image resource could not be found")
         }
         //create trigger - timeInterval
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval, repeats: false)

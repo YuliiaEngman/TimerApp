@@ -15,9 +15,9 @@
 		0F4DDC1D23FF19630091F5F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F4DDC1B23FF19630091F5F9 /* LaunchScreen.storyboard */; };
 		0F4DDC2823FF19630091F5F9 /* TimerAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4DDC2723FF19630091F5F9 /* TimerAppTests.swift */; };
 		0F4DDC3323FF26F10091F5F9 /* wolf-howling-sound-effect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0F4DDC3223FF26F10091F5F9 /* wolf-howling-sound-effect.mp3 */; };
-		0F4DDC3523FF27D60091F5F9 /* TimeOut.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F4DDC3423FF27D60091F5F9 /* TimeOut.png */; };
 		0F4DDC3723FF30160091F5F9 /* ManageTimersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4DDC3623FF30160091F5F9 /* ManageTimersViewController.swift */; };
 		0F4DDC3923FF3F5C0091F5F9 /* PendingNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4DDC3823FF3F5C0091F5F9 /* PendingNotification.swift */; };
+		0FC9E0872404AB2600442382 /* TimeOut.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FC9E0862404AB2600442382 /* TimeOut.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,9 +43,9 @@
 		0F4DDC2723FF19630091F5F9 /* TimerAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerAppTests.swift; sourceTree = "<group>"; };
 		0F4DDC2923FF19630091F5F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F4DDC3223FF26F10091F5F9 /* wolf-howling-sound-effect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "wolf-howling-sound-effect.mp3"; sourceTree = "<group>"; };
-		0F4DDC3423FF27D60091F5F9 /* TimeOut.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TimeOut.png; sourceTree = "<group>"; };
 		0F4DDC3623FF30160091F5F9 /* ManageTimersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageTimersViewController.swift; sourceTree = "<group>"; };
 		0F4DDC3823FF3F5C0091F5F9 /* PendingNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingNotification.swift; sourceTree = "<group>"; };
+		0FC9E0862404AB2600442382 /* TimeOut.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TimeOut.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,7 +92,7 @@
 				0F4DDC1423FF19600091F5F9 /* SetTimerViewController.swift */,
 				0F4DDC3623FF30160091F5F9 /* ManageTimersViewController.swift */,
 				0F4DDC3823FF3F5C0091F5F9 /* PendingNotification.swift */,
-				0F4DDC3423FF27D60091F5F9 /* TimeOut.png */,
+				0FC9E0862404AB2600442382 /* TimeOut.png */,
 				0F4DDC3223FF26F10091F5F9 /* wolf-howling-sound-effect.mp3 */,
 				0F4DDC1623FF19600091F5F9 /* Main.storyboard */,
 				0F4DDC1923FF19630091F5F9 /* Assets.xcassets */,
@@ -196,7 +196,7 @@
 				0F4DDC1D23FF19630091F5F9 /* LaunchScreen.storyboard in Resources */,
 				0F4DDC1A23FF19630091F5F9 /* Assets.xcassets in Resources */,
 				0F4DDC1823FF19600091F5F9 /* Main.storyboard in Resources */,
-				0F4DDC3523FF27D60091F5F9 /* TimeOut.png in Resources */,
+				0FC9E0872404AB2600442382 /* TimeOut.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
