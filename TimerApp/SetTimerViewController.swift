@@ -19,6 +19,8 @@ class SetTimerViewController: UIViewController {
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var button: UIButton!
     
+    private let center = UNUserNotificationCenter.current()
+    
     weak var delegate: SetTimerViewControllerDelegate?
     
     //FIXME: I dont think it is working
@@ -36,7 +38,35 @@ class SetTimerViewController: UIViewController {
         super.viewDidLoad()
         timerPickerView.dataSource = self
         timerPickerView.delegate = self
+        
+        checkForNotificationAuthorization()
+        
+       // center.delegate = self
     }
+    
+    private func checkForNotificationAuthorization() {
+          center.getNotificationSettings {(settings) in
+              if settings.authorizationStatus == .authorized {
+                  print("app is authorized for notifications")
+              } else {
+                  self.requestNotificationPermissions()
+              }
+          }
+      }
+    
+    private func requestNotificationPermissions() {
+          center.requestAuthorization(options: [.alert, .sound]) {(granted, error) in
+              if let error = error {
+                  print("error requesting authorization: \(error)")
+                  return
+              }
+              if granted {
+                  print("access was granted")
+              } else {
+                  print("acces denied")
+              }
+          }
+      }
     
     private func createLocalNotification() {
         // create the content (Model for тotification):

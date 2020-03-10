@@ -33,7 +33,7 @@ class ManageTimersViewController: UIViewController {
         configureRefreshControl()
         
         loadNotifications()
-        checkForNotificationAuthorization()
+        //checkForNotificationAuthorization()
         // setting this view controller as the delegate object for the UNNotificationCenterDelegate
         center.delegate = self
     }
@@ -62,29 +62,29 @@ class ManageTimersViewController: UIViewController {
         }
     }
     
-    private func checkForNotificationAuthorization() {
-        center.getNotificationSettings {(settings) in
-            if settings.authorizationStatus == .authorized {
-                print("app is authorized for notifications")
-            } else {
-                self.requestNotificationPermissions()
-            }
-        }
-    }
+//    private func checkForNotificationAuthorization() {
+//        center.getNotificationSettings {(settings) in
+//            if settings.authorizationStatus == .authorized {
+//                print("app is authorized for notifications")
+//            } else {
+//                self.requestNotificationPermissions()
+//            }
+//        }
+//    }
     
-    private func requestNotificationPermissions() {
-        center.requestAuthorization(options: [.alert, .sound]) {(granted, error) in
-            if let error = error {
-                print("error requesting authorization: \(error)")
-                return
-            }
-            if granted {
-                print("access was granted")
-            } else {
-                print("acces denied")
-            }
-        }
-    }
+//    private func requestNotificationPermissions() {
+//        center.requestAuthorization(options: [.alert, .sound]) {(granted, error) in
+//            if let error = error {
+//                print("error requesting authorization: \(error)")
+//                return
+//            }
+//            if granted {
+//                print("access was granted")
+//            } else {
+//                print("acces denied")
+//            }
+//        }
+//    }
 }
 
 extension ManageTimersViewController: UITableViewDataSource {
